@@ -109,11 +109,6 @@ def loadBankNotes(detector):
     return bankNotes
 
 
-def loadImageObjects():
-    imgObject = cv2.imread("50bill_small.jpg", 0)
-    return imgObject
-
-
 def detector():
 
     # Init AKAZE detector
