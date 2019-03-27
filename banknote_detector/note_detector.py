@@ -1,9 +1,6 @@
 import cv2
 import numpy as np
 
-FLANN_INDEX_KDTREE = 1  # bug: flann enums are missing
-FLANN_INDEX_LSH = 6
-
 
 def initAkaze():
     detector = cv2.AKAZE_create()
@@ -75,7 +72,7 @@ def exploreMatch(img1, img2, kpPairs, status=None, H=None):
 
 
 def matchAndDraw(imgObject, imgFrame, kp1, desc1, kp2, desc2, matcher):
-    rawMatches = matcher.knnMatch(desc1, trainDescriptors=desc2, k=2)  # 2
+    rawMatches = matcher.knnMatch(desc1, trainDescriptors=desc2, k=2)
     p1, p2, kpPairs = filterMatches(kp1, kp2, rawMatches)
     if len(p1) >= 4:
         H, status = cv2.findHomography(p1, p2, cv2.RANSAC, 5.0)
@@ -92,6 +89,26 @@ def findObj(imgObject, kp1, desc1, imgFrame, detector, matcher):
     matchAndDraw(imgObject, imgFrame, kp1, desc1, kp2, desc2, matcher)
 
 
+class BankNote:
+    img = None
+    kp = None
+    desc = None
+
+
+def loadBankNoteImage(imgFile, detector):
+    bankNote = BankNote()
+    bankNote.img = cv2.imread(imgFile, 0)
+    bankNote.kp, bankNote.desc = detector.detectAndCompute(bankNote.img, None)
+    return bankNote
+
+
+def loadBankNotes(detector):
+    imageFiles = ["50bill_small.jpg", "20bill_small.jpg"]
+    bankNotes = [loadBankNoteImage(img, detector) for img in imageFiles]
+
+    return bankNotes
+
+
 def loadImageObjects():
     imgObject = cv2.imread("50bill_small.jpg", 0)
     return imgObject
@@ -99,13 +116,13 @@ def loadImageObjects():
 
 def detector():
 
-    # Load objects
-    imgObject = loadImageObjects()
-
     # Init AKAZE detector
     detector, matcher = initAkaze()
-    kp1, desc1 = detector.detectAndCompute(imgObject, None)
 
+    # Load objects
+    bankNotes = loadBankNotes(detector)
+
+    # Start video
     cap = cv2.VideoCapture(0)
     while(True):
 
@@ -113,7 +130,8 @@ def detector():
         ret, frame = cap.read()
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-        findObj(imgObject, kp1, desc1, frame, detector, matcher)
+        findObj(bankNotes[0].img, bankNotes[0].kp,
+                bankNotes[0].desc, frame, detector, matcher)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
