@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from classes import BankNote
 
 
 def initAkaze():
@@ -89,12 +90,6 @@ def findObj(imgObject, kp1, desc1, imgFrame, detector, matcher):
     matchAndDraw(imgObject, imgFrame, kp1, desc1, kp2, desc2, matcher)
 
 
-class BankNote:
-    img = None
-    kp = None
-    desc = None
-
-
 def loadBankNoteImage(imgFile, detector):
     bankNote = BankNote()
     bankNote.img = cv2.imread(imgFile, 0)
@@ -104,9 +99,7 @@ def loadBankNoteImage(imgFile, detector):
 
 def loadBankNotes(detector):
     imageFiles = ["50bill_small.jpg", "20bill_small.jpg"]
-    bankNotes = [loadBankNoteImage(img, detector) for img in imageFiles]
-
-    return bankNotes
+    return [loadBankNoteImage(img, detector) for img in imageFiles]
 
 
 def detector():
