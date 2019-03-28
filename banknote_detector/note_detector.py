@@ -119,13 +119,14 @@ def loadBankNotes(detector):
     return [loadBankNoteImage(img, detector) for img in imageFiles]
 
 
-def detector():
+def detector(captureVideo):
 
     # Capture video
     videOut = None
-    # fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
-    # videOut = cv2.VideoWriter('output.avi', fourcc,
-    # 20.0, (1280, 720))
+    if captureVideo:
+        fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
+        videOut = cv2.VideoWriter('output.avi', fourcc,
+                                  20.0, (1280, 720))
 
     # Init AKAZE detector
     detector, matcher = initAkaze()
@@ -160,7 +161,7 @@ def detector():
                                            fy=0.5,
                                            interpolation=cv2.INTER_CUBIC))
 
-        if videOut is not None:
+        if captureVideo:
             videOut.write(bankNotes[winnerIndex].vis)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -170,8 +171,8 @@ def detector():
     cap.release()
     cv2.destroyAllWindows()
 
-    if videOut is not None:
+    if captureVideo:
         videOut.release()
 
 
-detector()
+detector(False)
