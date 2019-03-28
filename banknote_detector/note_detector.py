@@ -90,11 +90,8 @@ def matchAndDraw(imgObject, imgFrame, kp1, desc1, kp2, desc2, matcher):
     p1, p2, kpPairs = filterMatches(kp1, kp2, rawMatches)
     if len(p1) >= 4:
         H, status = cv2.findHomography(p1, p2, cv2.RANSAC, 5.0)
-        # status: binary array 1 inlier, 0 outlier
-        print('%d / %d  inliers/matched' % (np.sum(status), len(status)))
     else:
         H, status = None, None
-        print('%d matches found' % len(p1))
 
     vis = exploreMatch(imgObject, imgFrame, kpPairs, status, H)
     return vis, status

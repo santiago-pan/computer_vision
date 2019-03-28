@@ -1,4 +1,6 @@
-# Bank Note Detector
+# Banknote Detector
+
+OpenCV AKAZE local features for banknotes detection.
 
 # Results
 ![Images](./demo/frame1.png?raw=true)
