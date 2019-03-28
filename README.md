@@ -1,2 +1,4 @@
 # Computer Vision Projects
-TBC
+
+## Projects
+  * [Banknote detector](./banknote_detector/README.md)
