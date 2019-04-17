@@ -53,8 +53,6 @@ y_pred = graph.get_tensor_by_name("y_pred:0")
 x = graph.get_tensor_by_name("x:0")
 y_true = graph.get_tensor_by_name("y_true:0")
 y_test_images = np.zeros((1, len(classes)))
-print(x)
-print(y_true)
 
 # Creating the feed_dict that is required to be fed to calculate y_pred
 feed_dict_testing = {x: x_batch, y_true: y_test_images}
