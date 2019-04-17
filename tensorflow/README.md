@@ -1,9 +1,13 @@
-# Presequisites
+## Training CNN with tensorflow
+
+Example using tensorflow to train a CNN for two classes (dog/cat)
+
+### Requisites
 
 - OpenCV
 - Tensorflow
 
-# How to
+## How to
 
 > workon py3cv4
 
