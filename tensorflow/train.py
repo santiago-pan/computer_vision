@@ -13,7 +13,7 @@ from numpy.random import seed
 seed(1)
 set_random_seed(2)
 
-batch_size = 8  # 32
+batch_size = 32
 
 # Open trainig file
 outputfile = 'cats_dogs'
