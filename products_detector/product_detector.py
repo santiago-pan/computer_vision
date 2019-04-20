@@ -391,10 +391,10 @@ if __name__ == '__main__':
 
     rfactor = 1
 
-    cv2.imwrite('color_map_' + objectFilename + '_' +
+    cv2.imwrite('./results/color_map_' + objectFilename + '_' +
                 sceneFilename + '.jpg', matchMap)
-    cv2.imwrite('detection_map_' + objectFilename + '_' +
+    cv2.imwrite('/results/detection_map_' + objectFilename + '_' +
                 sceneFilename + '.jpg', imageOriginal)
 
-    cv2.waitKey(5000)
+    cv2.waitKey(1000)
     cv2.destroyAllWindows()
