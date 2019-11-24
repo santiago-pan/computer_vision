@@ -5,4 +5,6 @@
   
   * [Products detector](./products_detector/README.md)
 
-  * [Tensorflow image classification](./tensorflow/README.md)
+  * [Neural Style Transfer](./neural_style_transfer/README.md)
+
+  * [Image classification](./image_classification/README.md)
