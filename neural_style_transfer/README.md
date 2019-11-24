@@ -44,7 +44,7 @@ Van Gogh:
 <img src="./tensorflow2/results/generated_image_1.jpg" alt="alt text" width="auto" height="300">
 
 
-## Credits:
+## References:
 
 <li>
   <a href="https://www.coursera.org/learn/convolutional-neural-networks/notebook/lEthw/art-generation-with-neural-style-transfer">Coursera NST</a>
