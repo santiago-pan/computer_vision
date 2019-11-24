@@ -45,9 +45,14 @@ TensorFlow 2.0
 <div>
 <img src="./tensorflow1/images/pattern_3.jpg" alt="alt text" width="auto" height="60">
 <img src="./tensorflow1/images/content_3.jpg" alt="alt text" width="auto" height="60">
-<br>
+</div>
+TensorFlow
 <div>
 <img src="./tensorflow1/results/generated_image_3.png" alt="alt text" width="auto" height="300">
+</div>
+TensorFlow 2.0
+<div>
+<img src="./tensorflow2/results/generated_image_3.jpg" alt="alt text" width="auto" height="300">
 </div>
 
 
