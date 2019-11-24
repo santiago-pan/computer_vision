@@ -17,8 +17,8 @@ tf.disable_v2_behavior()
 pp = pprint.PrettyPrinter(indent=4)
 model = load_vgg_model("pretrained-model/imagenet-vgg-verydeep-19.mat")
 
-content_image = imageio.imread('images/20190531_181256.jpg')
-style_image = imageio.imread("images/pattern5.png")
+content_image = imageio.imread('images/<content-image>')
+style_image = imageio.imread("images/<style-image>")
 
 content_image = reshape_and_normalize_image(content_image)
 style_image = reshape_and_normalize_image(style_image)
