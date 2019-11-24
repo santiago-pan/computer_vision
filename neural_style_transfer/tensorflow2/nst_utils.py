@@ -14,7 +14,7 @@ def tensor_to_image(tensor):
 
 
 def load_img(path_to_img):
-    max_dim = 1052
+    max_dim = 1000
     img = tf.io.read_file(path_to_img)
     img = tf.image.decode_image(img, channels=3)
     img = tf.image.convert_image_dtype(img, tf.float32)

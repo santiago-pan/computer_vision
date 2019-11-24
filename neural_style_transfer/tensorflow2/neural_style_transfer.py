@@ -110,8 +110,8 @@ def train_step(image):
 # Program
 
 
-content_path = 'images/20190531_181256.jpg'
-style_path = 'images/pattern5.png'
+content_path = 'images/<content-image>'
+style_path = 'images/<style-image>'
 
 content_image = load_img(content_path)
 style_image = load_img(style_path)

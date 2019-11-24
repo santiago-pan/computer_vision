@@ -1,48 +1,46 @@
 ## About
 
-Two implementations of Neural Style Transfer algorithm, using tensorflow and tensorflow2.
+Two implementations of Neural Style Transfer algorithm, using TensorFlow and TensorFlow 2.0 with Keras.
 
 Code has been extracted from:
 
 - Coursera: Convolutional Networks Course
-- Tensorflow: Neural Style Transfer demo 
+- TensorFlow: Neural Style Transfer demo 
 
 ## Results
 
-### Tensorflow
-
-Van Gogh:
+#### Van Gogh
 
 <div>
 <img src="./tensorflow1/images/pattern_5.png" alt="alt text" width="auto" height="60">
 <img src="./tensorflow1/images/content_1.jpg" alt="alt text" width="auto" height="60">
 </div>
-Tensorflow
+TensorFlow
 <div>
 <img src="./tensorflow1/results/generated_image_1.jpg" alt="alt text" width="auto" height="300">
 </div>
-Tensorflow2
+TensorFlow 2.0
 <div>
 <img src="./tensorflow2/results/generated_image_1.jpg" alt="alt text" width="auto" height="300">
 </div>
 
-Picaso - Guernica:
+#### Picaso - Guernica
 
 <div>
 <img src="./tensorflow1/images/pattern_1.jpg" alt="alt text" width="auto" height="60">
 <img src="./tensorflow1/images/content_4.jpg" alt="alt text" width="auto" height="60">
 </div>
-Tensorflow
+TensorFlow
 <div>
 <img src="./tensorflow1/results/generated_image_2.png" alt="alt text" width="auto" height="300">
 </div>
-Tensorflow2
+TensorFlow 2.0
 <div>
 <img src="./tensorflow2/results/generated_image_2.jpg" alt="alt text" width="auto" height="300">
 </div>
 
 
-Yayoi Kusama:
+#### Yayoi Kusama
 
 <div>
 <img src="./tensorflow1/images/pattern_3.jpg" alt="alt text" width="auto" height="60">
