@@ -8,10 +8,11 @@ Two implementations of Neural Style Transfer algorithm, using tensorflow and ten
 
 Van Gogh:
 
-<img src="./tensorflow1/images/pattern_5.png" alt="alt text" width="auto" height="60">
-<img src="./tensorflow1/images/content_1.jpg" alt="alt text" width="auto" height="60">
-<br>
-<img src="./tensorflow1/results/generated_image_1.jpg" alt="alt text" width="auto" height="300">
+<div style="margin:2px">
+<img border="2" color="red" src="./tensorflow1/images/pattern_5.png" alt="alt text" width="auto" height="60">
+<img border="2" src="./tensorflow1/images/content_1.jpg" alt="alt text" width="auto" height="60">
+</div>
+<img style="margin:2px" border="2" src="./tensorflow1/results/generated_image_1.jpg" alt="alt text" width="auto" height="300">
 
 Picaso - Guernica:
 
