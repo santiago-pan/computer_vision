@@ -1,11 +1,15 @@
-import tensorflow as tf
-import numpy as np
-import os
-import glob
-import cv2
-import json
-import sys
 import argparse
+import glob
+import json
+import os
+import sys
+
+import numpy as np
+import tensorflow.compat.v1 as tf
+
+import cv2
+
+tf.disable_v2_behavior()
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 

@@ -2,6 +2,11 @@
 
 Two implementations of Neural Style Transfer algorithm, using tensorflow and tensorflow2.
 
+Code has been extracted from:
+
+- Coursera: Convolutional Networks Course
+- Tensorflow: Neural Style Transfer demo 
+
 ## Results
 
 ### Tensorflow

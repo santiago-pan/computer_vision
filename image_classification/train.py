@@ -1,15 +1,18 @@
-from tensorflow import set_random_seed
-import dataset
-import tensorflow as tf
-import time
-from datetime import timedelta
+import json
 import math
 import random
-import numpy as np
-import json
+import time
+from datetime import timedelta
 
-# Adding Seed so that random initialization is consistent
+import numpy as np
+import tensorflow.compat.v1 as tf
 from numpy.random import seed
+from tensorflow.compat.v1 import set_random_seed
+
+import dataset
+
+tf.disable_v2_behavior()
+
 seed(1)
 set_random_seed(2)
 
