@@ -1,8 +1,10 @@
+# baseline model with dropout for the dogs vs cats dataset
 import sys
 
-from keras.layers import Conv2D, Dense, Flatten, MaxPooling2D
+from keras.applications.vgg16 import VGG16
+from keras.layers import Conv2D, Dense, Dropout, Flatten, MaxPooling2D
 from keras.models import Sequential
-from keras.optimizers import SGD
+from keras.optimizers import SGD, Adam
 from keras.preprocessing.image import ImageDataGenerator
 from keras.utils import to_categorical
 from matplotlib import pyplot
@@ -16,12 +18,20 @@ def define_model():
     model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform',
                      padding='same', input_shape=(200, 200, 3)))
     model.add(MaxPooling2D((2, 2)))
+    model.add(Dropout(0.2))
+    model.add(Conv2D(64, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
+    model.add(MaxPooling2D((2, 2)))
+    model.add(Dropout(0.2))
+    model.add(Conv2D(128, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
+    model.add(MaxPooling2D((2, 2)))
+    model.add(Dropout(0.2))
     model.add(Flatten())
     model.add(Dense(128, activation='relu', kernel_initializer='he_uniform'))
+    model.add(Dropout(0.5))
     model.add(Dense(1, activation='sigmoid'))
 
     # compile model
-    opt = SGD(lr=0.001, momentum=0.9)
+    opt = Adam(learning_rate=0.001, beta_1=0.9, beta_2=0.999, amsgrad=False)
     model.compile(optimizer=opt, loss='binary_crossentropy', metrics=['accuracy'])
     return model
 
@@ -50,24 +60,31 @@ def run_test_harness():
     model = define_model()
 
     # create data generator
-    datagen = ImageDataGenerator(rescale=1.0/255.0)
+    train_datagen = ImageDataGenerator(rescale=1.0/255.0,
+                                       width_shift_range=0.1, height_shift_range=0.1, horizontal_flip=True)
+
+    test_datagen = ImageDataGenerator(rescale=1.0/255.0)
 
     # prepare iterators
-    train_it = datagen.flow_from_directory('../dataset_dogs_vs_cats/train/',
-                                           class_mode='binary', batch_size=64, target_size=(200, 200))
-    test_it = datagen.flow_from_directory('../dataset_dogs_vs_cats/test/',
-                                          class_mode='binary', batch_size=64, target_size=(200, 200))
+    train_it = train_datagen.flow_from_directory('../dataset_dogs_vs_cats/train/',
+                                                 class_mode='binary', batch_size=64, target_size=(200, 200))
+
+    test_it = test_datagen.flow_from_directory('../dataset_dogs_vs_cats/test/',
+                                               class_mode='binary', batch_size=64, target_size=(200, 200))
 
     # fit model
     history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
-                                  validation_data=test_it, validation_steps=len(test_it), epochs=20, verbose=1)
+                                  validation_data=test_it, validation_steps=len(test_it), epochs=50, verbose=2)
 
     # evaluate model
-    _, acc = model.evaluate_generator(test_it, steps=len(test_it), verbose=0)
+    _, acc = model.evaluate_generator(test_it, steps=len(test_it), verbose=2)
     print('> %.3f' % (acc * 100.0))
 
     # learning curves
     summarize_diagnostics(history)
+
+    # save model
+    model.save('dog-vs-cats.h5')
 
 
 run_test_harness()
