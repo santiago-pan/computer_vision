@@ -84,7 +84,7 @@ def run_test_harness():
     summarize_diagnostics(history)
 
     # save model
-    model.save('dog-vs-cats.h5')
+    model.save('dogs-vs-cats.h5')
 
 
 run_test_harness()

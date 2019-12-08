@@ -1,0 +1,10 @@
+/lane_detection/assets/*
+/plate_number/assets/*
+/neural_style_transfer/tensorflow1/output
+/neural_style_transfer/tensorflow2/output
+*.pyc
+*.mat
+/image_classification/dataset_dogs_vs_cats/*
+/image_classification/training_data/*
+*.npy
+image_classification/dataset_dogs_vs_cats/*
