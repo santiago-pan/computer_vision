@@ -18,3 +18,9 @@ Train
 Validate
 
 > python predict.py filename
+
+
+## Pre-requisites
+pip install tensorflot
+pip install keras
+pip install pillow
