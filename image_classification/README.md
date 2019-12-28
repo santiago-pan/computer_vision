@@ -2,25 +2,26 @@
 
 Example using tensorflow to train a CNN for two classes (dog/cat)
 
-### Requisites
+## Requisites
 
 - OpenCV
 - Tensorflow
 
+```
+pip install tensorflow
+pip install keras
+pip install pillow
+```
+
 ## How to
 
-> workon py3cv4
+```workon py3cv4```
 
 Train
 
-> python train.py
+```python train.py```
 
 Validate
 
-> python predict.py filename
+```python predict.py filename```
 
-
-## Pre-requisites
-pip install tensorflot
-pip install keras
-pip install pillow
